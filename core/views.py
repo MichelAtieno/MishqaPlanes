@@ -10,7 +10,7 @@ def products(request):
     return render(request, "product.html", context)
 
 def checkout(request):
-    render(request, "checkout.html")
+    return render(request, "checkout.html")
 
 class HomeView(ListView):
     model = Item
