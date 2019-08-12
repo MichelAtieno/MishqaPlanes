@@ -3,12 +3,7 @@
 {% block content %}
 <!DOCTYPE html>
 
-
-
-
 <body>
-
-  
 
   <!--Main layout-->
   <main class="mt-5 pt-4">
@@ -20,7 +15,7 @@
         <!--Grid column-->
         <div class="col-md-6 mb-4">
 
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg" class="img-fluid" alt="">
+          <img src="{{ object.image.url }}" class="img-fluid" alt="{{ object.title }}">
 
         </div>
         <!--Grid column-->
