@@ -3,6 +3,7 @@ chardet==3.0.4
 defusedxml==0.6.0
 Django==2.2
 django-allauth==0.39.1
+django-countries==5.4
 django-crispy-forms==1.7.2
 django-debug-toolbar==1.10.1
 idna==2.8
@@ -14,4 +15,5 @@ pytz==2018.5
 requests==2.22.0
 requests-oauthlib==1.2.0
 sqlparse==0.2.4
+stripe==2.35.0
 urllib3==1.25.3
