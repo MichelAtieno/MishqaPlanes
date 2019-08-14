@@ -4,11 +4,15 @@ from django.shortcuts import reverse
 from django_countries.fields import CountryField
 
 
-CATEGORY_CHOICES = (
-    ('H', 'Hats'),
-    ('Te', 'Tees'),
-    ('To', 'Tops' )
-)
+class Category(models.Model):
+    title = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.title
+
+    def get_all_categories(self):
+        all_categories = Category.objects.all()
+        return all_categories
 
 LABEL_CHOICES = (
     ('NA', 'NewA'),
@@ -20,10 +24,13 @@ class Item(models.Model):
     title= models.CharField(max_length=100)
     price = models.FloatField()
     discount_price = models.FloatField( blank="True", null="True")
-    category = models.CharField(choices=CATEGORY_CHOICES, max_length=2, default="" )
+    categories = models.ManyToManyField(Category)
+    date = models.DateTimeField(auto_now_add=True)
     label = models.CharField(choices=LABEL_CHOICES, max_length=2, default="" )
     slug = models.SlugField()
     description = models.TextField()
+    featured = models.BooleanField()
+    
 
     def __str__(self):
         return self.title
@@ -113,3 +120,25 @@ class Coupon(models.Model):
 
     def __str__(self):
         return self.code
+
+class Profile(models.Model):
+    user= models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    order = models.ForeignKey('Order', on_delete=models.SET_NULL, blank=True, null=True)
+    slug = models.SlugField(default="")
+
+    def get_profile(self,id):
+        profile = Profile.objects.get(user = id)
+        return profile
+    
+    def filter_by_id(self,id):
+        profile = Profile.objects.filter(user = id).first()
+        return profile
+    
+    def get_absolute_url(self):
+        return reverse("core:profile", kwargs={
+            'slug': self.slug
+        })
+
+    def __str__(self):
+        return self.user.username
+

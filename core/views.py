@@ -8,7 +8,7 @@ from django.views.generic import ListView, DetailView, View
 from django.shortcuts import redirect
 from django.utils import timezone
 from .forms import CheckoutForm,  CouponForm
-from .models import Item, OrderItem, Order, BillingAddress, Payment, Coupon
+from .models import Item, OrderItem, Order, BillingAddress, Payment, Coupon, Profile, Category
 
 import stripe
 stripe.api_key = settings.STRIPE_SECRET_KEY 
@@ -145,14 +145,29 @@ class PaymentView(View):
             return redirect("/")
 
       
+def get_category():
+    queryset = Item.objects.values('categories__title')
+    return queryset
 
        
+def home(request):
+    latest = Item.objects.order_by('-date')[0:4]
+    category = get_category()
+    all_categories = Category.objects.all()
+    queryset = Item.objects.filter(featured=True)
 
+    context = {
+        'latest': latest,
+        'category': category,
+        'all_categories': all_categories,
+        'object_list' : queryset
+    }
+    return render(request, "home-page.html", context)
 
-class HomeView(ListView):
-    model = Item
-    paginate_by = 4
-    template_name = "home-page.html"
+# class HomeView(View):
+#     model = Item
+#     paginate_by = 4
+#     template_name = "home-page.html"
 
 class OrderSummaryView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
@@ -171,6 +186,10 @@ class OrderSummaryView(LoginRequiredMixin, View):
 class ItemDetailView(DetailView):
     model = Item
     template_name = "product.html"
+
+class ProfileView(DetailView):
+    model = Order
+    template_name = "profile.html"
 
 @login_required
 def add_to_cart(request, slug):
@@ -274,3 +293,17 @@ class AddCouponView(View):
             except ObjectDoesNotExist:
                 messages.info(self.request, "You do not have an active order.")      
                 return redirect("core:checkout")
+
+# def profile(request, user):
+    
+#     profile = get_object_or_404(Order,  user=request.user)
+#     order_qs = Order.objects.filter(user=request.user, ordered=False)
+#     try:
+#         profile_info = Profile.get_profile(profile.id)
+#     except:
+#         profile_info = Profile.filter_by_id(profile.id)
+#     context = {
+#         'profile' : profile,
+#         'profile_info' : profile_info
+#          }
+#     return render(self.request, "profile.html", context)  
