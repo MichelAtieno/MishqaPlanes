@@ -1,65 +1,108 @@
 {% load cart_template_tags %}
+{% load static %}
+
+<head>
+  <style>
+    nav{display: flex; align-items: center;text-align:center;height: 9vh;}
+    .side-nav{ text-transform:uppercase;height:100%;width:0;position:fixed;z-index:1;top:35px;;left:0;background-color:#fff;opacity:1.5;overflow-x:hidden;padding-top:60px; transition:0.5s;}
+    .side-nav a{padding:10px 10px 10px 30px;text-decoration:none;font-size:22px;color:black;display:block;transition:0.3s;text-align:center;}
+    .side-nav a:hover{color:black;}
+    .side-nav .btn-close{position:absolute;top:0;font-size:36px}
+   
+  </style>
+
+</head>
+<body>
+
+
 <!-- Navbar -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
-    <div class="container">
-
-    
-
-      
-
-      <!-- Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-        <!-- Left -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link waves-effect" href="/">Home
-              <span class="sr-only">(current)</span>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar row">
+          <span class="open-slide">
+            <a href="#" onclick="openSlideMenu()">
+              <svg width="30" height="30">
+                  <path d="M0,5 30,5" stroke="#000" stroke-width="5"/>
+                  <path d="M0,14 30,14" stroke="#000" stroke-width="5"/>
+                  <path d="M0,23 30,23" stroke="#000" stroke-width="5"/>
+              </svg>
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="/checkout">Checkout</a>
-          </li>
+          </span>
+    
+          <div class="col-md-3"></div>
+          <div class="col-md-1"></div>
+          <div class="col-md-3" style="justify-content: center; align-items: center;">
+              <img src="{% static 'img/paperplanes.png' %}" style="height: 50px; width: 50px;">
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-md-4">
+              <ul class="navbar-nav nav-flex-icons">
+                  {% if request.user.is_authenticated %}
+                  <li class="nav-item">
+                      <a href="" class="nav-link waves-effect">
+                        <span class="clearfix d-none d-sm-inline-block"> {{ request.user.username }} </span>
+                      </a>
+                    </li>
+                  <li class="nav-item">
+                    <a href="{% url 'core:order-summary' %}" class="nav-link waves-effect">
+                      <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
+                      <i class="fas fa-shopping-cart"></i>
+                      <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link waves-effect" href="{% url 'account_logout' %}"> 
+                      <span class="clearfix d-none d-sm-inline-block"> Logout </span>
+                    </a>
+                  </li>
+                 {% else %}
+                 <li class="nav-item">
+                    <a class="nav-link waves-effect" href="{% url 'account_login' %}"> 
+                      <span class="clearfix d-none d-sm-inline-block"> Login </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link waves-effect" href="{% url 'account_signup' %}"> 
+                      <span class="clearfix d-none d-sm-inline-block"> Signup </span>
+                    </a>
+                  </li>
+                  {% endif %}
+                </ul>
+          </div>
+       
          
-          
-        </ul>
+        <!-- Left -->
+       
 
         <!-- Right -->
-        <ul class="navbar-nav nav-flex-icons">
-          {% if request.user.is_authenticated %}
-          <li class="nav-item">
-              <a href="" class="nav-link waves-effect">
-                <span class="clearfix d-none d-sm-inline-block"> {{ request.user.username }} </span>
-              </a>
-            </li>
-          <li class="nav-item">
-            <a href="{% url 'core:order-summary' %}" class="nav-link waves-effect">
-              <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
-              <i class="fas fa-shopping-cart"></i>
-              <span class="clearfix d-none d-sm-inline-block"> Cart </span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% url 'account_logout' %}"> 
-              <span class="clearfix d-none d-sm-inline-block"> Logout </span>
-            </a>
-          </li>
-         {% else %}
-         <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% url 'account_login' %}"> 
-              <span class="clearfix d-none d-sm-inline-block"> Login </span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% url 'account_signup' %}"> 
-              <span class="clearfix d-none d-sm-inline-block"> Signup </span>
-            </a>
-          </li>
-          {% endif %}
-        </ul>
+       
 
-      </div>
+      
 
     </div>
   </nav>
   <!-- Navbar -->
+  <div id="side-menu" class="side-nav">
+     
+      
+      <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+      <a href="#">New Arrivals</a>
+      <a href="#">Hats</a>
+      <a href="#">Tees</a>
+      <a href="#">Tops</a>
+      <a href="#">Bottoms</a>
+      <a href="#">Accessories</a>
+      <a href="#">Support</a>
+    </div>
+
+  <script>
+      function openSlideMenu(){
+        document.getElementById('side-menu').style.width = '250px';
+        document.getElementById('main').style.marginLeft = '250px';
+        document.getElementsByTagName('body').style.opacity = '1.5';
+      }
+  
+      function closeSlideMenu(){
+        document.getElementById('side-menu').style.width = '0';
+        document.getElementById('main').style.marginLeft = '0';
+      }
+    </script>
+    </body>
