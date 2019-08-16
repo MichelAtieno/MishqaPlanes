@@ -6,13 +6,15 @@ from django_countries.fields import CountryField
 
 class Category(models.Model):
     title = models.CharField(max_length=20)
+    image = models.ImageField(blank="True", null="True")
 
     def __str__(self):
         return self.title
 
-    def get_all_categories(self):
-        all_categories = Category.objects.all()
-        return all_categories
+    def get_category_absolute_url(self):
+        return reverse('core:category_profile', kwargs={
+            'id': self.id
+        })
 
 LABEL_CHOICES = (
     ('NA', 'NewA'),

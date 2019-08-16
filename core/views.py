@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
@@ -164,6 +165,17 @@ def home(request):
     }
     return render(request, "home-page.html", context)
 
+def category_profile(request, id):
+    one_category = get_object_or_404(Category, id=id)
+    cat_queryset = Item.objects.all()
+    cat_query = one_category.title
+    cat_queryset = cat_queryset.filter(Q(categories__title__icontains=cat_query)).distinct()
+    context = {
+        'one_category': one_category,
+        'queryset': cat_queryset
+     }
+
+    return render(request, "category_profile.html", context)
 # class HomeView(View):
 #     model = Item
 #     paginate_by = 4

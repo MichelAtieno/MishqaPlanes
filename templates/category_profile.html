@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <style>
+        .imageBox{
+            position: relative;
+            margin: 10px auto;
+            border-radius: 4px;
+            overflow: hidden;
+            max-width: 300px;
+            max-height: 300px;
+        }
+        .imageBox img{
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+        }
+
+        .imageBox h3{
+            position: absolute;
+            margin: 0;
+            padding: 0;
+           
+            transform: translateY(50px);
+            text-align: center;
+            width: 100%;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            transition: .5s;
+        }
+
+        .imageBox:hover{
+            opacity: 0.5;
+            background-color: bisque;
+        }
+        
+        .imageBox:hover h3{
+            top: 50%;
+            transform: translateY(-50%);
+           
+        }
+    </style>
+        
+</head>
+<body style="background-color: #818181">
+    
+
+    <div class="container">
+        <div class="row" id="news_title">
+            <div class="col-md-12">
+                <h1 >Category</h1>
+            </div>
+        </div> 
+        <div id="content" class="main_content" style="background-color: #818181">  
+        <div class="info">
+        <div class="row">
+            <div class="col-md-11">
+                
+                <div class="row">
+                   
+                        {% for post in queryset %}
+                        <div class="col-md-4">
+                            
+                            <div class="imageBox">
+                                <a href="{{ post.get_absolute_url }}">
+                                <img src="{{ post.image.url }}" class="card-img img-fluid">
+                                <h3>{{  post.title }}</h3>
+                                </a>
+                                
+                                
+                            </div>
+                            
+                        </div>
+                        {% endfor %}
+
+                    
+                </div>
+
+            </div>
+            <div class="col-md-1"></div>
+           
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+</body>
+{% endblock %}

@@ -34,6 +34,69 @@
       font-size: 40px;
       font-weight: 900;
     }
+    
+
+    #section1 span:nth-child(1){
+      animation: fade 5s infinite 200ms;
+    }
+    #section1 span:nth-child(2){
+      animation: fade 5s infinite 400ms;
+    }
+    #section1 span:nth-child(3){
+      animation: fade 5s infinite 600ms;
+    }
+    #section1 span:nth-child(4){
+      animation: fade 5s infinite 800ms;
+    }
+    #section1 span:nth-child(5){
+      animation: fade 5s infinite 1000ms;
+    }
+    #section1 span:nth-child(6){
+      animation: fade 5s infinite 1200ms;
+    }
+    #section1 span:nth-child(7){
+      animation: fade 5s infinite 1400ms;
+    }
+    #section1 span:nth-child(8){
+      animation: fade 5s infinite 1400ms;
+    }
+    #section1 span:nth-child(9){
+      animation: fade 5s infinite 1400ms;
+    }
+    #section1 span:nth-child(10){
+      animation: fade 5s infinite 1400ms;
+    }
+    #section1 span:nth-child(11){
+      animation: fade 5s infinite 1400ms;
+    }
+    #section1 span:nth-child(12){
+      animation: fade 5s infinite 1400ms;
+    }
+    #section1 p:nth-child(1){
+      animation: fade 5s infinite 1600ms;
+    }
+    #section1 p:nth-child(2){
+      animation: fade 10s infinite 2000ms;
+    }
+    #section1 p:nth-child(3){
+      animation: fade 15s infinite 2400ms;
+    }
+    #section1 p:nth-child(4){
+      animation: fade 20s infinite 2800ms;
+    }
+
+    
+
+    @keyframes fade{
+      50%{
+        opacity: 0.02;
+      }
+      100%{
+        opacity: 0;
+      }
+    }
+
+    
   </style>
 </head>
 
@@ -53,6 +116,11 @@
         </div>
         {% endfor %}
       </div>
+      <div class="row">
+        <div class="col-md-12">
+          
+        </div>
+      </div>
 
       <div class="row" id="section1">
         <div class="col-lg-12">
@@ -69,37 +137,25 @@
             <span>e</span>
             <span>s</span>
           </h1>
+          <p>Once you dream, you et your intention.</p>
+          <p>This is what I want, where I want to go.</p>
+          <p>Greatness is a process.</p>
         </div>
         </div>
 
         <div class="row justify-content-center mb-4">
+            {% for cat in all_categories %}
             <div class="col-lg-3">
-                <a href="/arrivals" class="card inner" style="width: 18rem; height:20rem;">
-                  New Arrivals
-                  <img src="{% static 'img/snapback2.jpeg' %}" class="card-img-top" alt="{{ item.title }}">
-                </a>
-              </div>
-            <div class="col-lg-3">
-                <a href="/hats" class="card inner" style="width: 18rem; height:20rem;">
-                  Hats
-                  <img src="{% static 'img/snapback3.jpg' %}" class="card-img-top" alt="{{ item.title }}">
                
-                </a>
-            </div>
-            <div class="col-lg-3">
-              <a href="/tees" class="card inner" style="width: 18rem; height:20rem;">
-                Tees
-                <img src="{% static 'img/shirt-croptop.jpg' %}" class="card-img-top" alt="{{ item.title }}">
-              
-              </a>
-          </div>
-          <div class="col-lg-3">
-            <a href="/tops" class="card inner" style="width: 18rem; height:20rem;">
-              Tops
-              <img src="{% static 'img/crop-top.jpg' %}" class="card-img-top" alt="{{ item.title }}">
-             
-            </a>
-        </div>
+                    <a href="{{ cat.get_category_absolute_url}}"  class="card inner" style="width: 18rem; height:20rem;">
+                      {{ cat }}
+                      <img src="{{ cat.image.url }}" class="card-img-top" alt="{{ item.title }}">
+                    </a>  
+                   
+              </div>
+              {% endfor %}
+            
+       
        
         </div>
 
@@ -129,10 +185,10 @@
             </div>
             {% for item in object_list %}
 
-            <div class="col-lg-3">
+            <div class="col-lg-3" id="featured">
                 <a href="" class="card inner" style="width: 18rem; height:20rem;">
                   <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.title }}">
-                  
+                  {{ item.title }}
                 </a>
             </div>
         {% endfor %}

@@ -80,18 +80,15 @@
     </div>
   </nav>
   <!-- Navbar -->
+  
   <div id="side-menu" class="side-nav">
-     
-      
-      <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
-      <a href="#">New Arrivals</a>
-      <a href="#">Hats</a>
-      <a href="#">Tees</a>
-      <a href="#">Tops</a>
-      <a href="#">Bottoms</a>
-      <a href="#">Accessories</a>
-      <a href="#">Support</a>
+      {% for cat in all_categories %}
+      <a class="btn-close" onclick="closeSlideMenu()">&times;</a>
+      <a href="{{ cat.get_category_absolute_url}}">{{ cat }}</a>
+    
+      {% endfor %}
     </div>
+    
 
   <script>
       function openSlideMenu(){

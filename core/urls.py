@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, CheckoutView, ItemDetailView, add_to_cart, remove_from_cart, OrderSummaryView,  remove_single_item_from_cart, PaymentView, AddCouponView
+from .views import home, CheckoutView, ItemDetailView, add_to_cart, remove_from_cart, OrderSummaryView,  remove_single_item_from_cart, PaymentView, AddCouponView, category_profile
 
 app_name="core"
 
@@ -13,5 +13,5 @@ urlpatterns = [
     path('remove-from-cart/<slug>/', remove_from_cart, name="remove-from-cart"),
     path('remove-item-from-cart/<slug>/',remove_single_item_from_cart, name="remove-single-item-from-cart"),
     path('payment/<payment_option>/', PaymentView.as_view(), name="payment"),
-    # path('profile/<user>/', profile, name="profile")
+    path('category/<id>',category_profile, name="category_profile"),
 ]
