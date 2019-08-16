@@ -30,6 +30,10 @@
       font-size: 50px;
       font-weight: 900;
     }
+    #section1 p{
+      font-size: 15px;
+      font-weight: 900;
+    }
     #section2 h1{
       font-size: 40px;
       font-weight: 900;
@@ -85,8 +89,6 @@
       animation: fade 20s infinite 2800ms;
     }
 
-    
-
     @keyframes fade{
       50%{
         opacity: 0.02;
@@ -94,6 +96,60 @@
       100%{
         opacity: 0;
       }
+    }
+
+    .imageBox {
+      border-radius: 4px;
+      overflow: hidden;
+      width: 300px;
+      height: 350px;
+
+    }
+
+    .imageBox h3{
+      position: absolute;
+      margin: 0;
+      padding: 0;
+      top: -24px;
+      transform: translateY(-50%);
+      text-align: center;
+      width: 100%;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      transition: .5s;
+    }
+
+    .imageBox:hover{
+      opacity: 0.5;
+      
+    }
+
+    .imageBox:hover h3{
+      top: 50%;
+      transform: translateY(-50%);
+      
+    }
+
+    .imageBox a{
+      position: absolute;
+      margin: 0;
+      padding: 0;
+      top: -24px;
+      transform: translateY(-50%);
+      text-align: center;
+      width: 100%;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      transition: .5s;
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+    .imageBox:hover a{
+      top: 50%;
+      transform: translateY(-50%);
+      
     }
 
     
@@ -109,7 +165,7 @@
       <div class="row justify-content-center mb-4">
         {% for item in latest %}
         <div class="col-lg-3">
-          <a href="{{ item.get_absoulute_url }}" class="card inner" style="width: 18rem; height:20rem;">
+          <a href="{{ item.get_absoulute_url }}" class="card inner" style="width: 18rem; height:25rem;">
             <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.title }}">
           
           </a>
@@ -137,7 +193,7 @@
             <span>e</span>
             <span>s</span>
           </h1>
-          <p>Once you dream, you et your intention.</p>
+          <p>Once you dream, you set your intention.</p>
           <p>This is what I want, where I want to go.</p>
           <p>Greatness is a process.</p>
         </div>
@@ -146,12 +202,10 @@
         <div class="row justify-content-center mb-4">
             {% for cat in all_categories %}
             <div class="col-lg-3">
-               
-                    <a href="{{ cat.get_category_absolute_url}}"  class="card inner" style="width: 18rem; height:20rem;">
-                      {{ cat }}
-                      <img src="{{ cat.image.url }}" class="card-img-top" alt="{{ item.title }}">
-                    </a>  
-                   
+              <div class="imageBox card" id="Categories" style="width: 17rem; height:20rem;">
+                <img src="{{ cat.image.url }}" class="img-fluid card-img-top" alt="{{ cat.title}}">
+                <a  href="{{ cat.get_category_absolute_url}}" class="card-body"><h3>{{ cat }}</h3> </a>
+              </div>     
               </div>
               {% endfor %}
             
@@ -186,10 +240,10 @@
             {% for item in object_list %}
 
             <div class="col-lg-3" id="featured">
-                <a href="" class="card inner" style="width: 18rem; height:20rem;">
-                  <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.title }}">
-                  {{ item.title }}
-                </a>
+                <div class="imageBox card">
+                  <img src="{{ item.image.url }}" class="img-fluid card-img-top" alt="{{ item.title }}">
+                  <h3 class="card-body">{{ item.title }}</h3>
+                </div>
             </div>
         {% endfor %}
           

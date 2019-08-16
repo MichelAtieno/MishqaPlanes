@@ -3,7 +3,7 @@
 
 <head>
   <style>
-    nav{display: flex; align-items: center;text-align:center;height: 9vh;}
+    nav{display: flex; align-items: center;text-align:center;height: 10vh;}
     .side-nav{ text-transform:uppercase;height:100%;width:0;position:fixed;z-index:1;top:35px;;left:0;background-color:#fff;opacity:1.5;overflow-x:hidden;padding-top:60px; transition:0.5s;}
     .side-nav a{padding:10px 10px 10px 30px;text-decoration:none;font-size:22px;color:black;display:block;transition:0.3s;text-align:center;}
     .side-nav a:hover{color:black;}
@@ -17,6 +17,7 @@
 
 <!-- Navbar -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar row">
+       
           <span class="open-slide">
             <a href="#" onclick="openSlideMenu()">
               <svg width="30" height="30">
@@ -26,16 +27,17 @@
               </svg>
             </a>
           </span>
-    
-          <div class="col-md-3"></div>
-          <div class="col-md-1"></div>
+          <div class="col-md-4">
+              <h6>FREE SHIPPING ON ORDERS OVER $75</h6>
+          </div>
+         
           <div class="col-md-3" style="justify-content: center; align-items: center;">
             <a href="/">
                 <img src="{% static 'img/paperplanes.png' %}" style="height: 50px; width: 50px;">
             </a>  
             
           </div>
-          <div class="col-md-2"></div>
+          <div class="col-md-1"></div>
           <div class="col-md-4">
               <ul class="navbar-nav nav-flex-icons">
                   {% if request.user.is_authenticated %}
