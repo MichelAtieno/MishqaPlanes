@@ -7,12 +7,11 @@
 <head>
   <style>
     .inner{
-    overflow: hidden;
-    }
-
-    .inner{
-        transition: all 2s ease-in;
-    }
+      overflow: hidden;
+      width: 18rem;
+      height:25rem;
+      transition: all 2s ease-in;
+      }
 
     .inner:hover img{
       background-size: cover;
@@ -152,7 +151,41 @@
       
     }
 
+    #Categories{
+      width: 17rem;
+      height:20rem;
+    }
+    #featured{
+      width: 17rem;
+      height:20rem;
+    }
+    @media screen and (max-width:1024px) and (max-height:1366px){
+      .inner{
+        width: 15rem;
+        height:23rem;
+      }
+      #Categories, #featured{
+        width: 14rem;
+        height:18rem;
+      }
+    }
+    @media screen and (max-width:768px) and (max-height:1024px){
+      .inner{
+        width: 11.5rem;
+        height:18rem;
+      }
+      #Categories, #featured{
+        width: 11rem;
+        height:15rem;
+      }
+    }
+    @media screen and (max-width:500px){
+      .inner{
+        width: 8rem;
+        height:11rem;
+      }
     
+    }
   </style>
 </head>
 
@@ -164,8 +197,8 @@
     <div class="container">
       <div class="row justify-content-center mb-4">
         {% for item in latest %}
-        <div class="col-lg-3">
-          <a href="{{ item.get_absoulute_url }}" class="card inner" style="width: 18rem; height:25rem;">
+        <div class="col-md-3 col-sm-6 col-xs-12" id="">
+          <a href="{{ item.get_absoulute_url }}" class="card inner">
             <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.title }}">
           
           </a>
@@ -179,7 +212,7 @@
       </div>
 
       <div class="row" id="section1">
-        <div class="col-lg-12">
+        <div class="col-md-12 col-sm-6 col-xs-12">
         <h1><span>M</span>
             <span>i</span>
             <span>s</span>
@@ -201,8 +234,8 @@
 
         <div class="row justify-content-center mb-4">
             {% for cat in all_categories %}
-            <div class="col-lg-3">
-              <div class="imageBox card" id="Categories" style="width: 17rem; height:20rem;">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="imageBox card" id="Categories">
                 <img src="{{ cat.image.url }}" class="img-fluid card-img-top" alt="{{ cat.title}}">
                 <a  href="{{ cat.get_category_absolute_url}}" class="card-body"><h3>{{ cat }}</h3> </a>
               </div>     
@@ -214,33 +247,17 @@
         </div>
 
         <div class="row justify-content-center mb-4"  id="section2">
-            <div class="col-lg-12">
+            <div class="col-md-12">
                 <h1>
-                    <span>F</span>
-                    <span>e</span>
-                    <span>a</span>
-                    <span>t</span>
-                    <span>u</span>
-                    <span>r</span>
-                    <span>e</span>
-                    <span>d</span>
-                    <span>c</span>
-                    <span>o</span>
-                    <span>l</span>
-                    <span>l</span>
-                    <span>e</span>
-                    <span>c</span>
-                    <span>t</span>
-                    <span>i</span>
-                    <span>o</span>
-                    <span>n</span>
+                    <span>Featured</span>
+                    <span>collection</span>
                     
                 </h1>
             </div>
             {% for item in object_list %}
 
-            <div class="col-lg-3" id="featured">
-                <div class="imageBox card">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="imageBox card" id="featured">
                   <img src="{{ item.image.url }}" class="img-fluid card-img-top" alt="{{ item.title }}">
                   <h3 class="card-body">{{ item.title }}</h3>
                 </div>
@@ -249,10 +266,11 @@
           
         </div>
 
-        <div class="row" id="section3">
+        <div class="row justify-content-center mb-4" id="section3">
           <div class="col-md-2"></div>
-          <div class="col-md-8">
-              <h1>Get on the list</h1>
+          <div class="col-md-8 mt-4">
+              <h4>Get on the list</h4>
+             
               <p>Sign up for product drops and the latest news.</p>
               <div class="form-holder">
                   <form action="#" method="POST">
