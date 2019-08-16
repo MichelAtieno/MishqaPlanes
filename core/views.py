@@ -176,6 +176,12 @@ def category_profile(request, id):
      }
 
     return render(request, "category_profile.html", context)
+
+# def profile(request, id):
+#     user_prof = get_object_or_404(Profile, id=id)
+#     prof_queryset = Item.objects.all()
+#     prof_query = 
+
 # class HomeView(View):
 #     model = Item
 #     paginate_by = 4

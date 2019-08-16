@@ -45,16 +45,16 @@
     </style>
         
 </head>
-<body style="background-color: #818181">
+<body>
     
 
     <div class="container">
         <div class="row" id="news_title">
             <div class="col-md-12">
-                <h1 >Category</h1>
+                <h1 >{{ one_category.title }}</h1>
             </div>
         </div> 
-        <div id="content" class="main_content" style="background-color: #818181">  
+        <div id="content" class="main_content">  
         <div class="info">
         <div class="row">
             <div class="col-md-11">
@@ -65,7 +65,7 @@
                         <div class="col-md-4">
                             
                             <div class="imageBox">
-                                <a href="{{ post.get_absolute_url }}">
+                                <a href="{{ post.get_absoulute_url }}">
                                 <img src="{{ post.image.url }}" class="card-img img-fluid">
                                 <h3>{{  post.title }}</h3>
                                 </a>

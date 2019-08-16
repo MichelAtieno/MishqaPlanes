@@ -30,7 +30,10 @@
           <div class="col-md-3"></div>
           <div class="col-md-1"></div>
           <div class="col-md-3" style="justify-content: center; align-items: center;">
-              <img src="{% static 'img/paperplanes.png' %}" style="height: 50px; width: 50px;">
+            <a href="/">
+                <img src="{% static 'img/paperplanes.png' %}" style="height: 50px; width: 50px;">
+            </a>  
+            
           </div>
           <div class="col-md-2"></div>
           <div class="col-md-4">
@@ -80,15 +83,18 @@
     </div>
   </nav>
   <!-- Navbar -->
-  
   <div id="side-menu" class="side-nav">
-      {% for cat in all_categories %}
-      <a class="btn-close" onclick="closeSlideMenu()">&times;</a>
-      <a href="{{ cat.get_category_absolute_url}}">{{ cat }}</a>
-    
-      {% endfor %}
+     
+      
+      <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+      <a href="/category/4">New Arrivals</a>
+      <a href="/category/1">Hats</a>
+      <a href="/category/2">Tees</a>
+      <a href="/category/3">Tops</a>
+      <a href="#">Bottoms</a>
+      <a href="#">Accessories</a>
+      <a href="#">Support</a>
     </div>
-    
 
   <script>
       function openSlideMenu(){
