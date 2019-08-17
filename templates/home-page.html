@@ -197,7 +197,7 @@
     <div class="container">
       <div class="row justify-content-center mb-4">
         {% for item in latest %}
-        <div class="col-md-3 col-sm-6 col-xs-12" id="">
+        <div class="col-md-3 col-sm-6 col-xs-6" id="">
           <a href="{{ item.get_absoulute_url }}" class="card inner">
             <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.title }}">
           
@@ -212,7 +212,7 @@
       </div>
 
       <div class="row" id="section1">
-        <div class="col-md-12 col-sm-6 col-xs-12">
+        <div class="col-md-12 col-sm-6">
         <h1><span>M</span>
             <span>i</span>
             <span>s</span>
@@ -234,7 +234,7 @@
 
         <div class="row justify-content-center mb-4">
             {% for cat in all_categories %}
-            <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="col-md-3 col-sm-6 col-xs-12 col-xs-6">
               <div class="imageBox card" id="Categories">
                 <img src="{{ cat.image.url }}" class="img-fluid card-img-top" alt="{{ cat.title}}">
                 <a  href="{{ cat.get_category_absolute_url}}" class="card-body"><h3>{{ cat }}</h3> </a>
@@ -256,7 +256,7 @@
             </div>
             {% for item in object_list %}
 
-            <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="col-md-3 col-sm-6 col-xs-12 col-xs-6">
                 <div class="imageBox card" id="featured">
                   <img src="{{ item.image.url }}" class="img-fluid card-img-top" alt="{{ item.title }}">
                   <h3 class="card-body">{{ item.title }}</h3>
@@ -303,7 +303,7 @@
   </main>
   <!--Main layout-->
 
-  {% include "footer.html" %}
+  
 
  
 </body>

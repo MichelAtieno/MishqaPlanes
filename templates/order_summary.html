@@ -4,6 +4,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style>
+    .table-responsive{
+      overflow-x: auto;
+    }
+    table{
+      border-collapse: collapse;
+    }
+    .btn{
+      float:right;
+    }
+    #checkout {
+      margin-left: 10px;
+    }
+    @media screen and (max-width:500px){
+      table{
+        width: 100%;
+      }
+      .btn {
+        float: left;
+      }
+      #checkout {
+       margin-left: 0px;
+       margin-bottom: 10px;
+     }
+    }
+  </style>
   
 </head>
 
@@ -75,8 +101,8 @@
                         </tr>
                         <tr>
                             <td colspan="5">
-                                <a class="btn btn-warning float-right ml-2" href="/checkout" >Proceed to checkout</a>
-                                <a class="btn btn-primary float-right" href="/" >Continue shopping</a>
+                                <a class="btn btn-warning" id="checkout" href="/checkout" >Proceed to checkout</a>
+                                <a class="btn btn-primary" href="/" >Continue shopping</a>
                             </td>
                            
                         </tr>
@@ -90,9 +116,7 @@
   </main>
   <!--Main layout-->
 
-  {% include "footer.html" %}
 
- 
 </body>
 
 </html>

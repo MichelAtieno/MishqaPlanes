@@ -4,20 +4,97 @@
       <style>
         footer{
           overflow-x: hidden;
-          align-items: center;
-          text-align:center;
-          height: 10vh;
+          height: 17vh;
           bottom:0;
+          text-transform:uppercase;
         }
+
+        #footer-plane{
+          left:0;
+        }
+       
+       
         .page-footer ul{
           display: flex;
-          
           list-style: none;
           width: 100%;
         }
         .page-footer ul li{
-          margin-left:15px;
+          margin-left:30px;
+          align-items: center;
+          text-align: center;
         }
+
+        .page-footer a i{
+          right: 0;
+          align-items: center;
+          text-align: center;
+        }
+
+        
+        @media screen and (max-width:1024px) and (max-height:1366px){
+         footer{
+           height: 11vh;
+         }
+         .page-footer a i{
+          right: 40px;
+         }
+         
+         .page-footer ul li{
+          margin-left:15px;
+          }
+         .page-footer a i{
+          right: 20px;
+         }
+        
+        }
+        @media screen and (max-width:768px) and (max-height:1024px){
+          footer{
+           height: 11vh;
+         }
+          
+          .page-footer ul li{
+          margin-left:10px;
+          }
+          .page-footer a i{
+          right: 40px;
+          }
+         
+          
+          
+        }
+        @media screen and (max-width:500px){
+          footer{
+            height: 35vh;
+            align-items: center;
+            text-align:center;
+            }
+            
+            .page-footer ul{
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              text-align:center;
+            }
+            .page-footer ul li{
+              margin-right:60px;
+              margin-bottom: 0px;
+            }
+            .page-footer a i{
+              right: 0px;
+              margin-top:0;
+            }
+        }
+        @media screen and (max-width:320px){
+          footer{
+            height: 35vh;
+            align-items: center;
+            text-align:center;
+            font-size: 13px;
+          }
+          
+        }
+       
       </style>
 
   </head>
@@ -29,12 +106,12 @@
     
    
   
-    <div class="col-md-2">
+    <div class="col-md-3 col-sm-3" id="footer-plane">
         <img src="{% static 'img/paperplanes.png' %}" style="height: 50px; width: 50px;left:0">
 
     </div>
     
-    <div class="col-md-8">
+    <div class="col-md-6 col-sm-6" id="footer-desk">
       <ul>
         <li>Account</li>
         <li>Privacy Policy</li>
@@ -43,20 +120,22 @@
       </ul>
           
     </div>
-    <div class="col-md-2">
+    <div class="col-md-3 col-sm-3" id="footer-media">
         <a href="">
-          <i class="fab fa-facebook-f mr-3"></i>
+          <i class="fab fa-facebook-f mr-2"></i>
         </a>
   
         <a href="">
-          <i class="fab fa-twitter mr-3"></i>
+          <i class="fab fa-twitter mr-2"></i>
         </a>
 
         <a href="">
-          <i class="fab fa-instagram mr-3"></i>
+          <i class="fab fa-instagram mr-2"></i>
         </a>
       </div>
-    
+    <div class="col-md-12 col-sm-12">
+      <h5> Greatness is a process.</h5>
+    </div>
    
    
 

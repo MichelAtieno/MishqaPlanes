@@ -2,20 +2,41 @@
 
 {% block content %}
 <!DOCTYPE html>
-
+<head>
+  <style>
+    .product{
+      height: 550px;
+      width: 450px;
+    }
+    @media screen and (min-width:768px){
+      .product{
+      height: 450px;
+      width: 350px;
+     }
+    }
+    @media screen and (max-width:500px){
+      .product{
+      height: 400px;
+      width: 300px;
+     }
+    }
+  </style>
+</head>
 <body>
 
   <!--Main layout-->
-  <main class="mt-5 pt-4">
-    <div class="container dark-grey-text mt-5">
+  <main class="mt-1 pt-1">
+    <div class="container dark-grey-text ">
 
       <!--Grid row-->
       <div class="row wow fadeIn">
 
         <!--Grid column-->
         <div class="col-md-6 mb-4">
-
-          <img src="{{ object.image.url }}" class="img-fluid" alt="{{ object.title }}">
+          <div class="card product">
+            <img src="{{ object.image.url }}" class="img-fluid card-img-top" alt="{{ object.title }}">
+          </div>
+          
 
         </div>
         <!--Grid column-->
@@ -28,7 +49,9 @@
 
             <div class="mb-3">
               <a href="">
-                <span class="badge purple mr-1">{{ object.category_display }}</span>
+                {% for cat in  object.categories.all %}
+                <span class="badge purple mr-1">{{ cat }}</span>
+                {% endfor %}
               </a>
              
             </div>
@@ -57,10 +80,10 @@
 
             </form> -->
 
-            <a href="{{ object.get_add_to_cart_url }}" class="btn btn-primary btn-md my-0 p">Add to cart
+            <a href="{{ object.get_add_to_cart_url }}" class="btn btn-primary btn-md my-0 p mt-1">Add to cart
               <i class="fas fa-shopping-cart ml-1"></i>
             </a>
-            <a href="{{ object.get_remove_from_cart_url }}" class="btn btn-danger btn-md my-0 p">Remove from cart
+            <a href="{{ object.get_remove_from_cart_url }}" class="btn btn-danger btn-md my-0 p mt-1" id="remove_from_cart">Remove from cart
               <i class="fas fa-shopping-cart ml-1"></i>
             </a>
 
@@ -94,35 +117,7 @@
       </div>
       <!--Grid row-->
 
-      <!--Grid row-->
-      <div class="row wow fadeIn">
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-12 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
+     
 
     </div>
   </main>
