@@ -64,10 +64,10 @@
                         {% for post in queryset %}
                         <div class="col-md-4">
                             
-                            <div class="imageBox">
+                            <div class="imageBox card">
                                 <a href="{{ post.get_absoulute_url }}">
                                 <img src="{{ post.image.url }}" class="card-img img-fluid">
-                                <h3>{{  post.title }}</h3>
+                                <h3 class="card-body">{{  post.title }}</h3>
                                 </a>
                                 
                                 
