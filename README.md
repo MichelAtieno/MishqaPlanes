@@ -3,7 +3,8 @@
 
 ### Description
  This is an ecommerce website built with Django. The website displays products. Users can add and remove products to/from their cart while also specifying the quantity of each item.
-[![alt text](https://github.com/MichelAtieno/Michel-Atieno-August-2019/Rogue_Nation_app.png "Logo")]
+
+![alt text](https://github.com/MichelAtieno/Michel-Atieno-August-2019/Rogue_Nation_app.png)
 
 # You can view project on https://rogue-paperplanes.herokuapp.com/
 
