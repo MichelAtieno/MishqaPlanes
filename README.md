@@ -4,13 +4,12 @@
 ### Description
  This is an ecommerce website built with Django. The website displays products. Users can add and remove products to/from their cart while also specifying the quantity of each item.
 
-![alt text](https://github.com/MichelAtieno/Michel-Atieno-August-2019/Rogue_Nation_app.png)
 
-# You can view project on https://rogue-paperplanes.herokuapp.com/
+### You can view project on https://rogue-paperplanes.herokuapp.com/
 
 
 ## Set-up and Installation
-###     Prerequisites
+###     Pre-requisites
         - Python 3.6.6
         - Ubuntu software
 
@@ -25,13 +24,13 @@
 <ul>            
 
 ## Known bugs
-None so far.
+-Navbar not set for large screens
 
 ## Technologies used
     - Python 3.6 (Django Framework)
-    - Bootstrap 3 and 4
+    - Bootstrap 4
     - Heroku
-    - Postgresql
+    - PostgreSQL
 
 
 ## Support and contact details
