@@ -11,17 +11,7 @@
 ## Set-up and Installation
 ###     Pre-requisites
         - Python 3.6.6
-        - Ubuntu software
-
-<ul>
-    <li>Clone Project</li>
-    <li>Create and avtivate Virtual Environment</li>
-    <li>Download Django(Python Framework)</li>
-    <li> Prepare environment variables</li>
-    <li>Run Database Migrations</li>
-    <li>Run the app in development</li>
-    <li>Open the browser on `http://localhost:8000/` by running 'python3.6 manage.py runserver' on terminal</li>
-<ul>            
+        - Ubuntu software           
 
 ## Known bugs
 -Navbar not set for large screens
